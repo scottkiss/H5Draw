@@ -6,7 +6,8 @@ H5Draw —— A Easy Tool For HTML5 Canvas
 
 License
 ======
-Copyright 2012 (c) Kaine Shen <skkmvp@hotmail.com>
+H5Draw is released under the BSD license:<br/>
+   Copyright 2012 (c) Kaine Shen <skkmvp@hotmail.com>
 
 
 Redistribution and use in source and binary forms, with or without
@@ -21,7 +22,6 @@ are met:
       copyright notice, this list of conditions and the following
       disclaimer in the documentation and/or other materials
       provided with the distribution.
-
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER “AS IS” AND ANY
 EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
