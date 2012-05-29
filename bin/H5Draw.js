@@ -44,18 +44,29 @@
 			
 		},
 		/*fill the sharp*/
-		fill:function(color){
+		fill:function(color,effect){
 			this.steps.push({action:"fill",args:arguments});
-			this.operations.push("this.fill(\""+color+"\")");
+			this.operations.push("this.fill(\""+color+"\",\""+effect+"\")");
+			this.ctx.save();
 			this.ctx.fillStyle = color;
+			if(effect!=null){
+				if(effect.shadow!=null){
+				this.ctx.shadowBlur = effect.shadow.blur;
+				this.ctx.shadowColor = effect.shadow.color;
+				this.ctx.shadowOffsetX = effect.shadow.offsetX;
+				this.ctx.shadowOffsetY = effect.shadow.offsetY;
+				}
+			}
 			if(this.type==="rect"){
 				
 				this.ctx.fillRect(this.rect.x,this.rect.y,this.rect.width,this.rect.height);
+				this.ctx.restore();
 			}
 
 			if((this.type==="circle")||(this.type==="sector")){
 				
 				this.ctx.fill();
+				this.ctx.restore();
 			}
 			return this;
 		}, 
@@ -63,18 +74,20 @@
 		stroke:function(color,lineWidth){
 			this.steps.push({action:"stroke",args:arguments});
 			this.operations.push("this.stroke(\""+color+"\","+lineWidth+")");
+			
 			this.ctx.strokeStyle = color;
 			
 			if(this.type==="rect"){
 			    this.ctx.lineWidth = 1;
 			    this.ctx.lineWidth = lineWidth;
 				this.ctx.strokeRect(this.rect.x,this.rect.y,this.rect.width,this.rect.height);
-				
+				this.ctx.restore();
 			}
 			if((this.type==="circle")||(this.type==="sector")){
 			    this.ctx.lineWidth = 1;
 			    this.ctx.lineWidth = lineWidth;
 				this.ctx.stroke();
+				this.ctx.restore();
 			}
 			
 			if(this.type==="line"){
@@ -85,6 +98,7 @@
 				this.ctx.lineTo(this.line.x2,this.line.y2);
 				this.ctx.closePath();
 				this.ctx.stroke();
+				this.ctx.restore();
 				
 			}
 			if(this.type==="bz2"){
@@ -95,6 +109,7 @@
 				this.ctx.quadraticCurveTo(this.bz2.cpX,this.bz2.cpY,
 				this.bz2.endX,this.bz2.endY);
 				this.ctx.stroke();
+				this.ctx.restore();
 				
 			}
 			if(this.type==="bz3"){
@@ -106,6 +121,7 @@
 				this.bz3.cp2X,this.bz3.cp2Y,
 				this.bz3.endX,this.bz3.endY);
 				this.ctx.stroke();
+				this.ctx.restore();	
 				
 			}
 			return this;
