@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<head>
+		<title>Test for H5Draw</title>
+		<style>
+			#cvs{
+				border:solid 1px #999;
+				background-color:#aaa
+			}
+		</style>
+		<script src="H5Draw.js"></script>
+		<script>
+			window.onload = function(){
+				
+				H5D.D2('cvs').drawRect(40,40,60,100).fill(H5D.color.green,
+				{shadow:
+					{blur:0,color:"rgba(100,100,100,0.5)",offsetX:10,offsetY:10}
+				});
+				
+				H5D.D2('cvs').drawCircle(440,180,14).fill("rgba(0,120,212,1)",{
+				shadow:{
+					blur:20,color:"rgb(255,255,255)"
+					}
+				});
+				H5D.D2('cvs').drawSector(220,380,34,H5D.d2r(0),H5D.d2r(140),false).fill(H5D.color.blue,{
+				shadow:{
+					blur:20,color:"rgb(255,255,255)"}
+					});
+				H5D.D2('cvs').drawBz2(30,130,150,10,380,130).stroke(H5D.color.blue,20);	
+				H5D.D2('cvs').drawBz3(130,230,150,50,300,310,380,230).stroke(H5D.color.blue,10);	
+			}			
+		</script>
+	</head>
+
+	<body>
+		<canvas id="cvs" width="500" height="500">
+			sorry £¬your browser dosen't support html5
+		</canvas>
+	</body>
+
+</html>
