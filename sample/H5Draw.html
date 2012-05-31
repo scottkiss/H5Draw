@@ -3,32 +3,50 @@
 		<title>Test for H5Draw</title>
 		<style>
 			#cvs{
-				border:solid 1px #999
+				border:solid 1px #999;
+				background-color:#aaa
 			}
 		</style>
 		<script src="H5Draw.js"></script>
 		<script>
 			window.onload = function(){
 				
-				H5D.D2('cvs').drawRect(40,40,60,100).fill(H5D.color.green);
-				H5D.D2('cvs').translate(350,50);
-				H5D.D2('cvs').drawLine(220,280,440,350).stroke(H5D.color.black,20);
+			
 				
-				H5D.D2('cvs').translate(150,50);
-				H5D.D2('cvs').drawLine(220,280,340,350).stroke(H5D.color.blue,20);
-				H5D.D2('cvs').drawSector(120,180,34,H5D.d2r(0),H5D.d2r(30),false).fill(H5D.color.red);
-				H5D.D2('cvs').drawLine(330,290,350,360).stroke(H5D.color.red,40);
-				H5D.D2('cvs').translate(20,50);
-				H5D.D2('cvs').drawRect(140,140,60,60).stroke(H5D.color.blue,30);
-				
-				H5D.D2('cvs').drawCircle(40,80,34).stroke(H5D.color.red,20);
-				H5D.D2('cvs').translate(150,50);
-				H5D.D2('cvs').drawSector(220,380,34,H5D.d2r(0),H5D.d2r(140),false).fill(H5D.color.red);
-				
+				H5D.D2('cvs').drawLine(220,280,440,350).stroke(
+				{
+				color:H5D.color.black,
+				lineWidth:20
+				});
 				H5D.D2('cvs').clear();
-				H5D.D2('cvs').drawSector(220,380,34,H5D.d2r(0),H5D.d2r(140),false).fill(H5D.color.blue);
-				H5D.D2('cvs').drawBz2(30,130,150,10,380,130).stroke(H5D.color.blue,20);	
-				H5D.D2('cvs').drawBz3(130,230,150,50,300,310,380,230).stroke(H5D.color.blue,10);	//H5D.D2('cvs').drawRect(140,140,60,60).stroke(H5D.color.blue,30).translate(550,550);
+				
+			H5D.D2('cvs').drawLine(220,280,440,350).stroke(
+				{
+					color:H5D.color.black,
+					lineWidth:20
+				});
+				H5D.D2('cvs').drawSector(120,380,34,H5D.d2r(0),H5D.d2r(30),false).
+				fill({
+					color:H5D.color.red
+				});
+				
+				
+				H5D.D2('cvs').drawRect(140,140,60,60).stroke(
+				{	color:H5D.color.blue,
+					lineWidth:30
+				});
+				
+				H5D.D2('cvs').drawCircle(40,80,34).stroke(
+					{	color:H5D.color.red,
+						lineWidth:20
+					});
+				
+				H5D.D2('cvs').drawSector(220,380,34,H5D.d2r(0),H5D.d2r(140),false).
+				fill({
+						color:H5D.color.red
+					});
+				
+				
 			}			
 		</script>
 	</head>
