@@ -10,7 +10,8 @@
 	
 	/*H5D Context Object*/
 	window.H5D.context = {
-		
+		width:{},
+		height:{},
 		/*canvas */
 		cvs:{},
 		/*canvas context*/
@@ -197,6 +198,52 @@
 			return this;
 			
 		},
+		/*draw Text*/
+		drawText:function(drawArgs){
+			
+			if(drawArgs.textBaseLine!=null){
+				this.ctx.textBaseline = drawArgs.textBaseLine;
+			}
+			if(drawArgs.textAlign!=null){
+				this.ctx.textAlign = drawArgs.textAlign;
+			}
+			if(drawArgs.font!=null){
+				var f = "";
+				if(drawArgs.font.fontWeight!=null){
+					f = drawArgs.font.fontWeight+" ";
+				}
+				if(drawArgs.font.fontStyle!=null){
+					f += drawArgs.font.fontStyle+" ";
+				}
+				if(drawArgs.font.fontSize!=null){
+					f += drawArgs.font.fontSize+"px ";
+					
+				}
+				if(drawArgs.font.fontFace==null){
+					drawArgs.font.fontFace = "serif";
+				}
+				if(drawArgs.font.fontFace!=null){
+					f += drawArgs.font.fontFace;
+				}
+				this.ctx.font = f;
+			}
+			if(drawArgs.type!=null){
+				if(drawArgs.type==="fill"){
+						this.ctx.fillStyle = drawArgs.color!=null?drawArgs.color:"rgb(0,0,0)";
+						this.ctx.fillText(drawArgs.message,drawArgs.xPos,drawArgs.yPos);
+				}
+				if(drawArgs.type==="stroke"){
+					this.ctx.strokeStyle = drawArgs.color!=null?drawArgs.color:"rgb(0,0,0)";
+					this.ctx.strokeText(drawArgs.message,drawArgs.xPos,drawArgs.yPos);
+				}
+				if(drawArgs.type==="both"){
+						this.ctx.fillStyle(drawArgs.color!=null?drawArgs.color:"rgb(0,0,0)");
+						this.ctx.fillText(drawArgs.message,drawArgs.xPos,drawArgs.yPos);
+						this.ctx.strokeStyle(drawArgs.color!=null?drawArgs.color:"rgb(0,0,0)");
+						this.ctx.strokeText(drawArgs.message,drawArgs.xPos,drawArgs.yPos);
+				}
+			}
+		},
 		/*clear the canvas*/
 		clear:function (x,y,width,height){
 			
@@ -211,17 +258,14 @@
 		
 		
 	};
-	
-	
-	
-	
 	/*get 2d canvas context by id*/
 	function D2(canvasId){
 		var canvas = document.getElementById(canvasId);
 		var context = canvas.getContext("2d");
 		window.H5D.context.ctx = context;
 		window.H5D.context.cvs = canvas;
-		
+		window.H5D.context.width = canvas.width;
+		window.H5D.context.height = canvas.height;
 		return window.H5D.context;
 	}
 	window.H5D.D2 = D2;
@@ -232,4 +276,4 @@
 	}
 	window.H5D.d2r= d2r;
 	
-})();
+}());
